@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-from core import *
+from zwds.core import *
 
 """
 術數曆法 花甲
