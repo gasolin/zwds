@@ -279,16 +279,10 @@ p_5144_5f1f_v.p_5c0d_5bae_v = p_4ea4_53cb_v
 2. 再求五行局，
 3. 找出紫微星與天府星
 
-chunk 星, template 三方四正, 策略 局
-
 一出生即為一歲,
 過一立春算加一歲
 
 由命宮始, 陽男陰女大限順行
-
-
-西元日期 - 西曆轉農曆(Adapter) - 紫微星盤
-
 """
         
 class p_751f_8fb0_516b_5b57_v(object):
@@ -307,11 +301,14 @@ class p_751f_8fb0_516b_5b57_v(object):
         self.p_6642_8fb0_v = p_751f_6642_v
 
 
-from copy import deepcopy
 class p_7d2b_5fae_6597_6578_v(p_751f_8fb0_516b_5b57_v):
     """
     出生時辰 < 命宮位置 < 命宮天干 < 五行局 < 紫微星 > 十四主星
     http://hk.myblog.yahoo.com/lawrencioy/article?mid=257
+    
+    人能知足，不怨天地，順天理立善造命運。
+    認命、知命、然後聽天可也。
+    -- 破窯賦
     """
     def __init__(self, p_59d3_540d_v, p_6027_5225_v, p_751f_5e74_v, p_751f_6708_v, p_751f_65e5_v, p_751f_6642_v, p_958f_6708_v = 0):
 
@@ -324,10 +321,7 @@ class p_7d2b_5fae_6597_6578_v(p_751f_8fb0_516b_5b57_v):
         self.p_8eab_4e3b_v = self._p_53d6_8eab_4e3b_v()
 
         # 2. 安十二宮
-        self.__p_547d_5bae_5730_652f_v = p_5bc5_5bae_5730_652f_8868_v.index(self.p_547d_5bae_v)
-        # 讓各個紫微斗數物件擁有獨立的宮垣物件
-        self.p_5341_4e8c_5bae_4f4d_v = deepcopy(p_5341_4e8c_5bae_8868_v[-self.__p_547d_5bae_5730_652f_v:]) + \
-                    deepcopy(p_5341_4e8c_5bae_8868_v[:-self.__p_547d_5bae_5730_652f_v])
+        self.p_5b89_5341_4e8c_5bae_v()
 
         # 3. 定宮位天干
         self.p_5bc5_5bae_5929_5e72_8868_v = p_5929_5e72_8868_v[p_5929_5e72_8868_v.index(self.p_4e94_864e_9041_v(self.p_751f_5e74_v.p_5929_5e72_v)):] + \
@@ -338,9 +332,11 @@ class p_7d2b_5fae_6597_6578_v(p_751f_8fb0_516b_5b57_v):
             p_5bae_4f4d_v.p_5730_652f_v = p_5bc5_5bae_5730_652f_8868_v[p_9806_5e8f_v]
 
         # 4. 安五行局
-        self.p_4e94_884c_5c40_v = self._p_5b89_4e94_884c_5c40_v()
+        self.p_4e94_884c_5c40_v = self._p_5b9a_4e94_884c_5c40_v()
+
         # 5. 安十四主星的宮位
         self._p_5b89_5341_56db_4e3b_661f_v()
+
         # 6. 安輔、佐、煞、化、雜曜
         # 安四化
         self._p_5b89_56db_5316_661f_v()
@@ -358,10 +354,10 @@ class p_7d2b_5fae_6597_6578_v(p_751f_8fb0_516b_5b57_v):
         
         月數減時辰數再加一
         
-        寅正順數月逄。
-        生月起子二頭通。
-        逆至生時為命。
-        順至生時為身。
+        寅正順數月逢,
+        生月起子兩頭通,
+        順至生時身所在,
+        逆到生時命之宮.
         """
         return p_5bc5_5bae_5730_652f_8868_v[(p_5bc5_5bae_5730_652f_8868_v.index(p_5bc5_5bae_5730_652f_8868_v[self.p_751f_6708_v-1]) - p_5730_652f_8868_v.index(self.p_751f_6642_v))%12]
     
@@ -436,6 +432,20 @@ class p_7d2b_5fae_6597_6578_v(p_751f_8fb0_516b_5b57_v):
         elif p_652f_v in (p_5df3_v, p_4ea5_v):
             return p_5929_6a5f_v
 
+    def p_5b89_5341_4e8c_5bae_v(self):
+        """
+        命前為父母, 命後乃兄弟,
+        逆次而行之, 造端在夫妻,
+        子女兼財帛, 疾厄有遷移,
+        交友隨官祿, 田宅福德基.
+        """
+        from copy import deepcopy
+        self.__p_547d_5bae_5730_652f_v = p_5bc5_5bae_5730_652f_8868_v.index(self.p_547d_5bae_v)
+        # 讓各個紫微斗數物件擁有獨立的宮垣物件
+        self.p_5341_4e8c_5bae_4f4d_v = deepcopy(p_5341_4e8c_5bae_8868_v[-self.__p_547d_5bae_5730_652f_v:]) + \
+                    deepcopy(p_5341_4e8c_5bae_8868_v[:-self.__p_547d_5bae_5730_652f_v])
+        
+
     def p_4e94_864e_9041_v(self, p_751f_5e74_5929_5e72_v):
         """
         定寅宮天干
@@ -455,17 +465,18 @@ class p_7d2b_5fae_6597_6578_v(p_751f_8fb0_516b_5b57_v):
         elif p_751f_5e74_5929_5e72_v in (p_620a_v, p_7678_v): # 火
             return p_706b_v.p_76f8_6d29_v.p_5929_5e72_v[0] #甲
 
-    def _p_5b89_4e94_884c_5c40_v(self):
+    def _p_5b9a_4e94_884c_5c40_v(self):
         """
         取得五行局數
         
+        參考: 納音訣
         """
         p_5e72_652f_v = str(self.p_5bc5_5bae_5929_5e72_8868_v[self.__p_547d_5bae_5730_652f_v]) + str(self.p_547d_5bae_v)
         for p_82b1_7532_v in p_82b1_7532_8868_v:
             if p_5e72_652f_v == p_82b1_7532_v.p_540d_7a31_v:
                 return p_82b1_7532_v.p_4e94_884c_5c40_v
 
-    def _p_7d2b_5fae_661f_5bae_4f4d_v(self):
+    def _p_8d77_7d2b_5fae_v(self):
         """
         公式:
         出生日數+X%五行局數 = 0
@@ -483,7 +494,7 @@ class p_7d2b_5fae_6597_6578_v(p_751f_8fb0_516b_5b57_v):
         else:
             return p_5bc5_5bae_5730_652f_8868_v[y - x -1]
     
-    def _p_5b89_7d2b_5fae_661f_7cfb_v(self, p_5bae_4f4d_v):
+    def _p_5b89_7d2b_5fae_8af8_8fb0_v(self, p_5bae_4f4d_v):
         """紫機一日, 武同二廉, 逆行"""
         #找宮位
         p_5bae_4f4d_7d22_5f15_v = self.p_5341_4e8c_5bae_4f4d_v.index(p_5bae_4f4d_v)
@@ -494,14 +505,14 @@ class p_7d2b_5fae_6597_6578_v(p_751f_8fb0_516b_5b57_v):
         self.p_5341_4e8c_5bae_4f4d_v[p_5bae_4f4d_7d22_5f15_v-5].p_6b63_66dc_v.append(p_5929_540c_v)
         self.p_5341_4e8c_5bae_4f4d_v[p_5bae_4f4d_7d22_5f15_v-8].p_6b63_66dc_v.append(p_5ec9_8c9e_v)
 
-    def _p_5929_5e9c_661f_5bae_4f4d_v(self, p_7d2b_5fae_5bae_4f4d_v):
+    def _p_8d77_5929_5e9c_v(self, p_7d2b_5fae_5bae_4f4d_v):
         p_540c_5ea6_v = {p_5bc5_v:p_5bc5_v, p_7533_v:p_7533_v, p_4e11_v:p_536f_v, p_536f_v:p_4e11_v,
         	   p_5b50_v:p_8fb0_v, p_8fb0_v:p_5b50_v, p_5df3_v:p_4ea5_v, p_4ea5_v:p_5df3_v,
         	   p_5348_v:p_620c_v, p_620c_v:p_5348_v, p_672a_v:p_9149_v, p_9149_v:p_672a_v,
         }
         return p_540c_5ea6_v[p_7d2b_5fae_5bae_4f4d_v]
 
-    def _p_5b89_5929_5e9c_661f_7cfb_v(self, p_5bae_4f4d_v):
+    def _p_5b89_5929_5e9c_8af8_8fb0_v(self, p_5bae_4f4d_v):
         """府陰貪巨, 相梁殺三破 順行"""
         p_5bae_4f4d_7d22_5f15_v = self.p_5341_4e8c_5bae_4f4d_v.index(p_5bae_4f4d_v)
         p_5bae_4f4d_v.p_6b63_66dc_v.append(p_5929_5e9c_v)
@@ -517,13 +528,13 @@ class p_7d2b_5fae_6597_6578_v(p_751f_8fb0_516b_5b57_v):
         """
         地支 -> 宮位 -> 正曜.更新(紫微)
         """
-        self.__p_7d2b_5fae_5730_652f_v = self._p_7d2b_5fae_661f_5bae_4f4d_v()
-        self.__p_5929_5e9c_5730_652f_v = self._p_5929_5e9c_661f_5bae_4f4d_v(self.__p_7d2b_5fae_5730_652f_v)
+        self.__p_7d2b_5fae_5730_652f_v = self._p_8d77_7d2b_5fae_v()
+        self.__p_5929_5e9c_5730_652f_v = self._p_8d77_5929_5e9c_v(self.__p_7d2b_5fae_5730_652f_v)
         for p_5bae_4f4d_v in self.p_5341_4e8c_5bae_4f4d_v:
            if p_5bae_4f4d_v.p_5730_652f_v == self.__p_7d2b_5fae_5730_652f_v:
-               self._p_5b89_7d2b_5fae_661f_7cfb_v(p_5bae_4f4d_v)
+               self._p_5b89_7d2b_5fae_8af8_8fb0_v(p_5bae_4f4d_v)
            if p_5bae_4f4d_v.p_5730_652f_v == self.__p_5929_5e9c_5730_652f_v:
-               self._p_5b89_5929_5e9c_661f_7cfb_v(p_5bae_4f4d_v)
+               self._p_5b89_5929_5e9c_8af8_8fb0_v(p_5bae_4f4d_v)
     def _p_5b89_56db_5316_661f_v(self):
         """
         祿權科忌
@@ -673,6 +684,7 @@ class p_7d2b_5fae_6597_6578_v(p_751f_8fb0_516b_5b57_v):
 
     def p_5206_6790_v(self):
         pass
+        # chunk 星, template 三方四正, 策略 局
         #外貌
         #性格
         #格局
