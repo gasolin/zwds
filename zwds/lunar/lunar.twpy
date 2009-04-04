@@ -141,6 +141,12 @@
     http://www.hsip.cn/article/12/2005/200512162906.html
     http://www.evget.com/zh-CN/article/1694/default.aspx
     http://www.evget.com/zh-CN/article/1695/default.aspx
+    
+    chinese-lunar-calendar looks good
+    http://code.google.com/p/chinese-lunar-calendar/source/browse/trunk/date.py
+    
+    lunarcalendar2
+    http://code.google.com/p/lunarcalendar2/source/browse/trunk/LunarCalendar/src/com/anchorman/lunarcalendar/util/LunarCalendarUtils.java
     """
     定義 __初始化__(我):
         from lunarcalendar import LunarCalendar
