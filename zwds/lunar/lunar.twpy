@@ -145,6 +145,9 @@
     chinese-lunar-calendar looks good
     http://code.google.com/p/chinese-lunar-calendar/source/browse/trunk/date.py
     
+    lunar date
+    http://code.google.com/p/python-lunardate/source/browse/trunk/lunardate.py
+    
     lunarcalendar2
     http://code.google.com/p/lunarcalendar2/source/browse/trunk/LunarCalendar/src/com/anchorman/lunarcalendar/util/LunarCalendarUtils.java
     """
